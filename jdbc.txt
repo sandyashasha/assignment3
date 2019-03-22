@@ -1,0 +1,33 @@
+package jdbc;
+import java.sql.;
+public class junk1
+{
+  public static void main(String args[]) throws Exception
+  {
+    String driverClass;
+    String jdbcURL;
+    String userName;
+    String password;
+    String tableName;    
+    driverClass = com.mysql.jdbc.Driver;
+    jdbcURL = jdbcmysqllocalhost3306jdbcuseSSL=false;
+    userName = root;
+    password = root;
+    tableName = emp;
+    Class.forName(driverClass);
+    Connection connection = DriverManager.getConnection(jdbcURL, userName, password);
+    Statement statement = connection.createStatement();
+    ResultSet rs=statement.executeQuery(select  from emp);
+    while(rs.next())  
+    System.out.println(rs.getInt(1)+  +rs.getString(2)); 
+    System.out.println(n Table name +tableName);
+    ResultSet resultSet = statement.executeQuery(SELECT  FROM +tableName);
+    ResultSetMetaData metaData = resultSet.getMetaData();
+    System.out.println(n Number of columns +metaData.getColumnCount());
+    System.out.println(n Table description...!);
+    for(int i=1;i= metaData.getColumnCount();i++)
+    {
+      System.out.println(metaData.getColumnName(i)+t+metaData.getColumnTypeName(i));
+    }
+  }
+}
